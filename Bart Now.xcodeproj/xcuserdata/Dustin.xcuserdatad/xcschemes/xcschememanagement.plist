@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>Bart Now.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>DA488F3E1E0B5C5B00EA3A18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DA488F521E0B5C5B00EA3A18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DA488F5D1E0B5C5B00EA3A18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>
