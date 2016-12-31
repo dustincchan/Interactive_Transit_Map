@@ -1,14 +1,18 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="UzH-uO-d0S">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Interactive Map-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Bart_Now" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,11 +20,79 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="PxP-Uq-hfU">
+                                <rect key="frame" x="0.0" y="64" width="375" height="554"/>
+                                <connections>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="ubj-WP-0Bn"/>
+                                </connections>
+                            </mapView>
+                            <searchBar contentMode="redraw" placeholder="Search for station..." translatesAutoresizingMaskIntoConstraints="NO" id="jNk-oB-Cja">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="PxP-Uq-hfU" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="1l0-dP-2ZW"/>
+                            <constraint firstAttribute="trailing" secondItem="PxP-Uq-hfU" secondAttribute="trailing" id="6bO-rp-0Bd"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="PxP-Uq-hfU" secondAttribute="bottom" id="Cb3-gu-3pT"/>
+                            <constraint firstItem="jNk-oB-Cja" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Eg3-Pn-hXn"/>
+                            <constraint firstItem="jNk-oB-Cja" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="MwZ-dJ-73u"/>
+                            <constraint firstItem="PxP-Uq-hfU" firstAttribute="top" secondItem="jNk-oB-Cja" secondAttribute="bottom" id="NkF-R2-vd2"/>
+                            <constraint firstAttribute="trailing" secondItem="jNk-oB-Cja" secondAttribute="trailing" id="Pxc-F4-PMy"/>
+                            <constraint firstItem="PxP-Uq-hfU" firstAttribute="top" secondItem="jNk-oB-Cja" secondAttribute="bottom" id="ovx-hr-JIz"/>
+                        </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Interactive Map" image="map_icon" id="GBu-7x-cpf"/>
+                    <connections>
+                        <outlet property="mapView" destination="PxP-Uq-hfU" id="Faa-xu-ilj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="892" y="-123"/>
+        </scene>
+        <!--Route Planner-->
+        <scene sceneID="LUa-Rr-nqZ">
+            <objects>
+                <viewController id="2ij-3M-Nbu" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fTl-K7-noN"/>
+                        <viewControllerLayoutGuide type="bottom" id="ze0-Qa-Mku"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ucP-F2-3Vn">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Route Planner" image="route_icon" id="gAl-Dh-RwI"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2wZ-GX-jWb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="892" y="512"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="iCd-mr-3DC">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="UzH-uO-d0S" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="Jr8-KQ-0uk">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="uAf-M6-Arm"/>
+                        <segue destination="2ij-3M-Nbu" kind="relationship" relationship="viewControllers" id="bff-xr-fEt"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eC5-hT-8zA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="108" y="95.802098950524751"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="map_icon" width="25" height="25"/>
+        <image name="route_icon" width="25" height="25"/>
+    </resources>
 </document>
