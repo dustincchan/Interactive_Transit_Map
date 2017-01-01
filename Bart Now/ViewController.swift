@@ -20,6 +20,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
     // initialize station datasource that holds an array of station json
     var stationDatasource: [[String: String]] = []
+    var stationAnnotations: [Station] = []
 
     
     override func viewDidLoad() {
@@ -34,6 +35,9 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
         // set the pins for all stations
         for stationData in stationDatasource {
             let stationObj = Station(stationName: stationData["name"]!, stationDetails: "\(stationData["address"]!), \(stationData["city"]!) \(stationData["zipcode"]!)", coordinate: CLLocationCoordinate2D(latitude: Double(stationData["gtfs_latitude"]!)!, longitude: Double(stationData["gtfs_longitude"]!)!))
+            stationAnnotations.append(stationObj)
+            
+            // add every single annotation upon app loading
             self.mapView.addAnnotation(stationObj)
         }
     }
@@ -65,8 +69,25 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
             annotationView.canShowCallout = true
             annotationView.image = UIImage(named: "station_icon")
         }
-        
+
         return annotationView
+    }
+    
+    // search bar stuff
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        // remove all current annotations and re-add only the ones that match the query string
+        if searchBar.text == "" {
+            self.mapView.addAnnotations(stationAnnotations)
+        } else {
+            self.mapView.removeAnnotations(stationAnnotations)
+            let filteredAnnotations = self.stationAnnotations.filter() {station in
+                return station.title!.lowercased().range(of: searchBar.text!.lowercased()) != nil
+            }
+            self.mapView.addAnnotations(filteredAnnotations)
+        }
+
+        
+        
     }
     
     // parse station JSON data
