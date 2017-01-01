@@ -7,14 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F472A108B52F763276CECF8 /* Pods_Bart_Now.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02391ABB1EF576205B755E26 /* Pods_Bart_Now.framework */; };
+		DA2300D71E187C1000FF19B4 /* StationList.json in Resources */ = {isa = PBXBuildFile; fileRef = DA2300D61E187C1000FF19B4 /* StationList.json */; };
 		DA39E5261E184B43009A7B73 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA488F461E0B5C5B00EA3A18 /* Main.storyboard */; };
 		DA39E52A1E18582B009A7B73 /* Station.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA39E5291E18582A009A7B73 /* Station.swift */; };
 		DA488F431E0B5C5B00EA3A18 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA488F421E0B5C5B00EA3A18 /* AppDelegate.swift */; };
 		DA488F451E0B5C5B00EA3A18 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA488F441E0B5C5B00EA3A18 /* ViewController.swift */; };
 		DA488F4A1E0B5C5B00EA3A18 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA488F491E0B5C5B00EA3A18 /* Assets.xcassets */; };
 		DA488F4D1E0B5C5B00EA3A18 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA488F4B1E0B5C5B00EA3A18 /* LaunchScreen.storyboard */; };
-		DA488F581E0B5C5B00EA3A18 /* Bart_NowTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA488F571E0B5C5B00EA3A18 /* Bart_NowTests.swift */; };
-		DA488F631E0B5C5B00EA3A18 /* Bart_NowUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA488F621E0B5C5B00EA3A18 /* Bart_NowUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +35,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		02391ABB1EF576205B755E26 /* Pods_Bart_Now.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Bart_Now.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3D6090332270115265333C4D /* Pods-Bart Now.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bart Now.release.xcconfig"; path = "Pods/Target Support Files/Pods-Bart Now/Pods-Bart Now.release.xcconfig"; sourceTree = "<group>"; };
+		C918B93ABFC334D37AE1A995 /* Pods-Bart Now.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Bart Now.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Bart Now/Pods-Bart Now.debug.xcconfig"; sourceTree = "<group>"; };
+		DA2300D61E187C1000FF19B4 /* StationList.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = StationList.json; sourceTree = "<group>"; };
 		DA39E5291E18582A009A7B73 /* Station.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Station.swift; sourceTree = "<group>"; };
 		DA488F3F1E0B5C5B00EA3A18 /* Bart Now.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Bart Now.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA488F421E0B5C5B00EA3A18 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -44,11 +48,7 @@
 		DA488F4C1E0B5C5B00EA3A18 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA488F4E1E0B5C5B00EA3A18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA488F531E0B5C5B00EA3A18 /* Bart NowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bart NowTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA488F571E0B5C5B00EA3A18 /* Bart_NowTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bart_NowTests.swift; sourceTree = "<group>"; };
-		DA488F591E0B5C5B00EA3A18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA488F5E1E0B5C5B00EA3A18 /* Bart NowUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Bart NowUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		DA488F621E0B5C5B00EA3A18 /* Bart_NowUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bart_NowUITests.swift; sourceTree = "<group>"; };
-		DA488F641E0B5C5B00EA3A18 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F472A108B52F763276CECF8 /* Pods_Bart_Now.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,13 +77,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3EA96B35AC8673F36BC0D1D3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				C918B93ABFC334D37AE1A995 /* Pods-Bart Now.debug.xcconfig */,
+				3D6090332270115265333C4D /* Pods-Bart Now.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		CA5B2DCBCDA18A21AB40C3CE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				02391ABB1EF576205B755E26 /* Pods_Bart_Now.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		DA488F361E0B5C5B00EA3A18 = {
 			isa = PBXGroup;
 			children = (
 				DA488F411E0B5C5B00EA3A18 /* Bart Now */,
-				DA488F561E0B5C5B00EA3A18 /* Bart NowTests */,
-				DA488F611E0B5C5B00EA3A18 /* Bart NowUITests */,
 				DA488F401E0B5C5B00EA3A18 /* Products */,
+				3EA96B35AC8673F36BC0D1D3 /* Pods */,
+				CA5B2DCBCDA18A21AB40C3CE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -101,6 +119,7 @@
 			children = (
 				DA488F421E0B5C5B00EA3A18 /* AppDelegate.swift */,
 				DA488F441E0B5C5B00EA3A18 /* ViewController.swift */,
+				DA2300D61E187C1000FF19B4 /* StationList.json */,
 				DA488F461E0B5C5B00EA3A18 /* Main.storyboard */,
 				DA39E5291E18582A009A7B73 /* Station.swift */,
 				DA488F491E0B5C5B00EA3A18 /* Assets.xcassets */,
@@ -110,24 +129,6 @@
 			path = "Bart Now";
 			sourceTree = "<group>";
 		};
-		DA488F561E0B5C5B00EA3A18 /* Bart NowTests */ = {
-			isa = PBXGroup;
-			children = (
-				DA488F571E0B5C5B00EA3A18 /* Bart_NowTests.swift */,
-				DA488F591E0B5C5B00EA3A18 /* Info.plist */,
-			);
-			path = "Bart NowTests";
-			sourceTree = "<group>";
-		};
-		DA488F611E0B5C5B00EA3A18 /* Bart NowUITests */ = {
-			isa = PBXGroup;
-			children = (
-				DA488F621E0B5C5B00EA3A18 /* Bart_NowUITests.swift */,
-				DA488F641E0B5C5B00EA3A18 /* Info.plist */,
-			);
-			path = "Bart NowUITests";
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -135,9 +136,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA488F671E0B5C5B00EA3A18 /* Build configuration list for PBXNativeTarget "Bart Now" */;
 			buildPhases = (
+				FF279A5A6CECA071BCC23E6E /* [CP] Check Pods Manifest.lock */,
 				DA488F3B1E0B5C5B00EA3A18 /* Sources */,
 				DA488F3C1E0B5C5B00EA3A18 /* Frameworks */,
 				DA488F3D1E0B5C5B00EA3A18 /* Resources */,
+				3190BB055A5462BE45342D17 /* [CP] Embed Pods Frameworks */,
+				EBD2AE3A654434EB6FFB5F81 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -239,6 +243,7 @@
 				DA39E5261E184B43009A7B73 /* Main.storyboard in Resources */,
 				DA488F4D1E0B5C5B00EA3A18 /* LaunchScreen.storyboard in Resources */,
 				DA488F4A1E0B5C5B00EA3A18 /* Assets.xcassets in Resources */,
+				DA2300D71E187C1000FF19B4 /* StationList.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -258,6 +263,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		3190BB055A5462BE45342D17 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bart Now/Pods-Bart Now-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EBD2AE3A654434EB6FFB5F81 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Bart Now/Pods-Bart Now-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FF279A5A6CECA071BCC23E6E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		DA488F3B1E0B5C5B00EA3A18 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -273,7 +326,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA488F581E0B5C5B00EA3A18 /* Bart_NowTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,7 +333,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA488F631E0B5C5B00EA3A18 /* Bart_NowUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +466,7 @@
 		};
 		DA488F681E0B5C5B00EA3A18 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C918B93ABFC334D37AE1A995 /* Pods-Bart Now.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GLVTFRN6AB;
@@ -428,6 +480,7 @@
 		};
 		DA488F691E0B5C5B00EA3A18 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3D6090332270115265333C4D /* Pods-Bart Now.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = GLVTFRN6AB;

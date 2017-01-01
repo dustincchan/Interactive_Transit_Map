@@ -8,6 +8,7 @@
 
 import UIKit
 import MapKit
+import SwiftyJSON
 
 class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 
@@ -17,9 +18,9 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     let initialLocation = CLLocation(latitude: 37.8970287, longitude: -122.1420556)
     let regionRadius: CLLocationDistance = 10000
     
-    // initialize all the different stations
-    let walnutCreek = Station(stationName: "Walnut Creek", coordinate: CLLocationCoordinate2D(latitude: 37.8936405, longitude: -122.0898525))
-    let pleasantHill = Station(stationName: "Pleasant Hill", coordinate: CLLocationCoordinate2D(latitude: 37.8935523, longitude: -122.1949206))
+    // initialize station datasource that holds an array of station json
+    var stationDatasource: [[String: String]] = []
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,12 +28,16 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
         // initialize the map
         self.mapView.mapType = MKMapType.standard
         self.mapView.delegate = self
+        self.parseStationList()
         centerMapOnLocation(location: initialLocation)
         
         // set the pins for all stations
-        self.mapView.addAnnotation(walnutCreek)
-        self.mapView.addAnnotation(pleasantHill)
+        for stationData in stationDatasource {
+            let stationObj = Station(stationName: stationData["name"]!, stationDetails: "\(stationData["address"]!), \(stationData["city"]!) \(stationData["zipcode"]!)", coordinate: CLLocationCoordinate2D(latitude: Double(stationData["gtfs_latitude"]!)!, longitude: Double(stationData["gtfs_longitude"]!)!))
+            self.mapView.addAnnotation(stationObj)
+        }
     }
+    
     
     func centerMapOnLocation(location: CLLocation) {
         let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,regionRadius * 5.0, regionRadius * 5.0)
@@ -63,5 +68,26 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
         
         return annotationView
     }
+    
+    // parse station JSON data
+    func parseStationList() {
+        if let path = Bundle.main.path(forResource: "StationList", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                let jsonObj = JSON(data: data)
+                if jsonObj != JSON.null {
+                    self.stationDatasource = jsonObj["root"]["stations"]["station"].arrayObject as! [[String: String]]
+                    print(self.stationDatasource)
+                } else {
+                    print("JSON file is corrupted")
+                }
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        } else {
+            print("Invalid filename/path.")
+        }
+    }
+    
 }
 

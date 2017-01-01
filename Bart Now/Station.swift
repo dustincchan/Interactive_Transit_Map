@@ -14,9 +14,9 @@ class Station: NSObject, MKAnnotation {
     let subtitle: String?
     let coordinate: CLLocationCoordinate2D
     
-    init(stationName: String, coordinate: CLLocationCoordinate2D) {
+    init(stationName: String, stationDetails: String, coordinate: CLLocationCoordinate2D) {
         self.title = stationName
-        self.subtitle = stationName
+        self.subtitle = stationDetails
         self.coordinate = coordinate
         
         super.init()
