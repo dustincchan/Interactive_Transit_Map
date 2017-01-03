@@ -70,25 +70,30 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
             annotationView.image = UIImage(named: "station_icon")
         }
         
-        // custom annotation detail view
-//        let customAnnotationCalloutView = UIButton()
-//        customAnnotationCalloutView.setTitle("Set departure", for: .normal)
-//        customAnnotationCalloutView.backgroundColor = .green
-//        
-//        let widthConstraint = NSLayoutConstraint(item: customAnnotationCalloutView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40)
-//        customAnnotationCalloutView.addConstraint(widthConstraint)
-//        
-//        let heightConstraint = NSLayoutConstraint(item: customAnnotationCalloutView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)
-//        customAnnotationCalloutView.addConstraint(heightConstraint)
-        
-        let routeButtonOptions = UISegmentedControl(items: ["Departing", "Destination"])
-        routeButtonOptions.frame = CGRect(x: 20, y: 20, width: 200, height: 25)
-        
-
-        annotationView?.rightCalloutAccessoryView = routeButtonOptions
-        annotationView?.canShowCallout = true
+        self.addCustomDetailView(annotationView: annotationView)
 
         return annotationView
+    }
+    
+    func addCustomDetailView(annotationView: MKAnnotationView?) {
+        
+        let routeButtonOptions = UISegmentedControl(items: ["Set Departing", "Set Destination"])
+        routeButtonOptions.frame = CGRect(x: 20, y: 20, width: 200, height: 25)
+        
+        let routeAddress = UILabel(frame: CGRect(x: 20, y: 20, width: 200, height: 30))
+        routeAddress.text = (annotationView?.annotation?.subtitle)!!
+        routeAddress.font = UIFont.systemFont(ofSize: 14)
+        
+        let routeButtonStackView = UIStackView(arrangedSubviews: [routeAddress, routeButtonOptions])
+        routeButtonStackView.frame = CGRect(x: 0, y: 0, width: 200, height: 75)
+        routeButtonStackView.axis = .vertical
+        
+        annotationView?.detailCalloutAccessoryView = routeButtonStackView
+        annotationView?.canShowCallout = true
+    }
+    
+    func didChooseDestinationFromSegController(sender: UISegmentedControl) {
+        print(sender.selectedSegmentIndex)
     }
     
     // search bar stuff
