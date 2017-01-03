@@ -63,14 +63,30 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
             annotationView?.annotation = annotation
         } else {
             annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
-            annotationView?.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
         }
         
         if let annotationView = annotationView {
             // annotation view configuration here
-            annotationView.canShowCallout = true
             annotationView.image = UIImage(named: "station_icon")
         }
+        
+        // custom annotation detail view
+//        let customAnnotationCalloutView = UIButton()
+//        customAnnotationCalloutView.setTitle("Set departure", for: .normal)
+//        customAnnotationCalloutView.backgroundColor = .green
+//        
+//        let widthConstraint = NSLayoutConstraint(item: customAnnotationCalloutView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 40)
+//        customAnnotationCalloutView.addConstraint(widthConstraint)
+//        
+//        let heightConstraint = NSLayoutConstraint(item: customAnnotationCalloutView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 20)
+//        customAnnotationCalloutView.addConstraint(heightConstraint)
+        
+        let routeButtonOptions = UISegmentedControl(items: ["Departing", "Destination"])
+        routeButtonOptions.frame = CGRect(x: 20, y: 20, width: 200, height: 25)
+        
+
+        annotationView?.rightCalloutAccessoryView = routeButtonOptions
+        annotationView?.canShowCallout = true
 
         return annotationView
     }
@@ -127,6 +143,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
             
         }
     }
+
     
     // parse station JSON data
     func parseStationList() {

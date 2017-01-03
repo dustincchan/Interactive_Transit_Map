@@ -27,21 +27,19 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="ubj-WP-0Bn"/>
                                 </connections>
                             </mapView>
-                            <searchBar contentMode="redraw" placeholder="Departing from..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jNk-oB-Cja">
+                            <searchBar contentMode="redraw" placeholder="Departing from..." translatesAutoresizingMaskIntoConstraints="NO" id="jNk-oB-Cja">
                                 <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" red="0.83037328259999998" green="0.83037328259999998" blue="0.83037328259999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="1xa-no-NqR"/>
                                 </connections>
                             </searchBar>
-                            <searchBar contentMode="redraw" text="" placeholder="Destination..." translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="McW-mr-nQG">
+                            <searchBar contentMode="redraw" text="" placeholder="Destination..." translatesAutoresizingMaskIntoConstraints="NO" id="McW-mr-nQG">
                                 <rect key="frame" x="0.0" y="64" width="375" height="44"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="tintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="barTintColor" red="0.83037328256844245" green="0.83037328256844245" blue="0.83037328256844245" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="YPe-Ys-xcz"/>
@@ -70,7 +68,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="892" y="-123.68815592203899"/>
+            <point key="canvasLocation" x="855" y="-114"/>
         </scene>
     </scenes>
     <resources>
