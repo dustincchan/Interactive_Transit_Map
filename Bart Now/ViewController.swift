@@ -99,11 +99,11 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
                 if filteredAnnotations.count == 1 && isFilteredToSingleLocation == false {
                     mapView.selectAnnotation(filteredAnnotations.first!, animated: true)
                     let zoomedLocation = filteredAnnotations.first!.coordinate
-                    let zoomedCoordinateRegion = MKCoordinateRegionMakeWithDistance(zoomedLocation, regionRadius * 2.0, regionRadius * 2.0)
+                    let zoomedCoordinateRegion = MKCoordinateRegionMakeWithDistance(zoomedLocation, regionRadius * 3.0, regionRadius * 3.0)
                     mapView.setRegion(zoomedCoordinateRegion, animated: true)
                     isFilteredToSingleLocation = true
                 } else if filteredAnnotations.count != 1 {
-                    // zoom out when the user deletes his/her search or there's more than 1 filtered
+                    // zoom out when the user deletes his/her search or there's more than 1 filterable station
                     centerMapOnLocation(location: initialLocation)
                     isFilteredToSingleLocation = false
                 }
