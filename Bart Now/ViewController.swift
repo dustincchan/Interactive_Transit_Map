@@ -21,6 +21,9 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     // initialize station datasource that holds an array of station json
     var stationDatasource: [[String: String]] = []
     var stationAnnotations: [Station] = []
+    
+    var currentlyFilteredAnnotations: [Station] = []
+    var isFilteredToSingleLocation = false
 
     
     override func viewDidLoad() {
@@ -78,16 +81,40 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
         // remove all current annotations and re-add only the ones that match the query string
         if searchBar.text == "" {
             self.mapView.addAnnotations(stationAnnotations)
+            centerMapOnLocation(location: initialLocation)
         } else {
-            self.mapView.removeAnnotations(stationAnnotations)
+            
+            // filtere the datasource of annotations to our searchbar text
             let filteredAnnotations = self.stationAnnotations.filter() {station in
                 return station.title!.lowercased().range(of: searchBar.text!.lowercased()) != nil
             }
-            self.mapView.addAnnotations(filteredAnnotations)
+            
+            if filteredAnnotations != currentlyFilteredAnnotations {
+                // remove and re-add all annotations that passed a filter
+                self.mapView.removeAnnotations(stationAnnotations)
+                self.mapView.addAnnotations(filteredAnnotations)
+                self.currentlyFilteredAnnotations = filteredAnnotations
+                
+                // if the user filtered down to a single station, zoom into it
+                if filteredAnnotations.count == 1 && isFilteredToSingleLocation == false {
+                    mapView.selectAnnotation(filteredAnnotations.first!, animated: true)
+                    let zoomedLocation = filteredAnnotations.first!.coordinate
+                    let zoomedCoordinateRegion = MKCoordinateRegionMakeWithDistance(zoomedLocation, regionRadius * 2.0, regionRadius * 2.0)
+                    mapView.setRegion(zoomedCoordinateRegion, animated: true)
+                    isFilteredToSingleLocation = true
+                } else if filteredAnnotations.count != 1 {
+                    // zoom out when the user deletes his/her search or there's more than 1 filtered
+                    centerMapOnLocation(location: initialLocation)
+                    isFilteredToSingleLocation = false
+                }
+            }
+            
         }
-
-        
-        
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        // zoom out to default
+        centerMapOnLocation(location: initialLocation)
     }
     
     // parse station JSON data
