@@ -12,7 +12,6 @@ import SwiftyJSON
 
 class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 
-    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var mapView: MKMapView!
     
     let initialLocation = CLLocation(latitude: 37.8970287, longitude: -122.1420556)
@@ -47,7 +46,7 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     
     
     func centerMapOnLocation(location: CLLocation) {
-        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,regionRadius * 5.0, regionRadius * 5.0)
+        let coordinateRegion = MKCoordinateRegionMakeWithDistance(location.coordinate,regionRadius * 6, regionRadius * 6)
         mapView.setRegion(coordinateRegion, animated: true)
     }
     
@@ -79,16 +78,33 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     // search bar stuff
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         // remove all current annotations and re-add only the ones that match the query string
-        if searchBar.text == "" {
+        filterMapToSearchBarText(searchBarText: searchBar.text)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        // zoom out to default
+        centerMapOnLocation(location: initialLocation)
+    }
+    
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        // zoom out then filter to what's already in the searchbar
+        centerMapOnLocation(location: initialLocation)
+        currentlyFilteredAnnotations = []
+        isFilteredToSingleLocation = false
+        filterMapToSearchBarText(searchBarText: searchBar.text)
+    }
+    
+    func filterMapToSearchBarText(searchBarText: String?) {
+        print(searchBarText!)
+        if searchBarText == "" {
             self.mapView.addAnnotations(stationAnnotations)
             centerMapOnLocation(location: initialLocation)
         } else {
             
-            // filtere the datasource of annotations to our searchbar text
+            // filter the datasource of annotations to our searchbar text
             let filteredAnnotations = self.stationAnnotations.filter() {station in
-                return station.title!.lowercased().range(of: searchBar.text!.lowercased()) != nil
+                return station.title!.lowercased().range(of: searchBarText!.lowercased()) != nil
             }
-            
             if filteredAnnotations != currentlyFilteredAnnotations {
                 // remove and re-add all annotations that passed a filter
                 self.mapView.removeAnnotations(stationAnnotations)
@@ -110,11 +126,6 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
             }
             
         }
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        // zoom out to default
-        centerMapOnLocation(location: initialLocation)
     }
     
     // parse station JSON data
