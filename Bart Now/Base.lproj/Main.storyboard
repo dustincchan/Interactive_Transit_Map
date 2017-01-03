@@ -63,6 +63,8 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Interactive Map" image="map_icon" id="GBu-7x-cpf"/>
                     <connections>
+                        <outlet property="departureSearch" destination="jNk-oB-Cja" id="wgu-m6-uvp"/>
+                        <outlet property="destinationSearch" destination="McW-mr-nQG" id="1et-FI-azG"/>
                         <outlet property="mapView" destination="PxP-Uq-hfU" id="Faa-xu-ilj"/>
                     </connections>
                 </viewController>

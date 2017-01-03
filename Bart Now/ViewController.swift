@@ -13,6 +13,8 @@ import SwiftyJSON
 class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
 
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var departureSearch: UISearchBar!
+    @IBOutlet weak var destinationSearch: UISearchBar!
     
     let initialLocation = CLLocation(latitude: 37.8970287, longitude: -122.1420556)
     let regionRadius: CLLocationDistance = 10000
@@ -20,6 +22,10 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
     // initialize station datasource that holds an array of station json
     var stationDatasource: [[String: String]] = []
     var stationAnnotations: [Station] = []
+    
+    var currentlySelectedStation: Station?
+    var selectedDepartureStation: Station?
+    var selectedDestinationStation: Station?
     
     var currentlyFilteredAnnotations: [Station] = []
     var isFilteredToSingleLocation = false
@@ -75,10 +81,24 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
         return annotationView
     }
     
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        self.currentlySelectedStation = view.annotation as! Station?
+    }
+    
     func addCustomDetailView(annotationView: MKAnnotationView?) {
         
         let routeButtonOptions = UISegmentedControl(items: ["Set Departing", "Set Destination"])
         routeButtonOptions.frame = CGRect(x: 20, y: 20, width: 200, height: 25)
+        
+        // if this is already a selected station, indicate that
+        if selectedDepartureStation == annotationView?.annotation as! Station? {
+            routeButtonOptions.selectedSegmentIndex = 0
+        } else if selectedDestinationStation == annotationView?.annotation as! Station? {
+            routeButtonOptions.selectedSegmentIndex = 1
+        }
+        
+        
+        routeButtonOptions.addTarget(self, action: #selector(ViewController.didChooseDestinationFromSegController(sender:)), for: UIControlEvents.allEvents)
         
         let routeAddress = UILabel(frame: CGRect(x: 20, y: 20, width: 200, height: 30))
         routeAddress.text = (annotationView?.annotation?.subtitle)!!
@@ -92,8 +112,17 @@ class ViewController: UIViewController, UISearchBarDelegate, MKMapViewDelegate {
         annotationView?.canShowCallout = true
     }
     
-    func didChooseDestinationFromSegController(sender: UISegmentedControl) {
-        print(sender.selectedSegmentIndex)
+    func didChooseDestinationFromSegController(sender: AnyObject) {
+        
+        if sender.selectedSegmentIndex == 0 {
+            // user set departing station
+            self.selectedDepartureStation = currentlySelectedStation
+            departureSearch.text = selectedDepartureStation?.title!
+        } else if sender.selectedSegmentIndex == 1 {
+            // user set destination station
+            self.selectedDestinationStation = currentlySelectedStation
+            destinationSearch.text = selectedDestinationStation?.title!
+        }
     }
     
     // search bar stuff
